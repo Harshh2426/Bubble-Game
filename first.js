@@ -45,7 +45,6 @@ function bubbleGenerator() {
 function dataChanger() {
   arrayAllBubble.forEach((element) => {
     element.innerHTML = getRandom();
-    console.log(window.getComputedStyle(element).width);
   });
 }
 
@@ -73,7 +72,7 @@ start.addEventListener("click", () => {
 });
 
 restart.addEventListener("click", () => {
-  container.classList.remove("boxActive");
+  document.body.classList.remove("boxActive");
   hitValue = getRandom();
   Hit.innerHTML = hitValue;
   dataChanger();
@@ -98,7 +97,7 @@ bottomSection.addEventListener("click", (e) => {
 
 function endFunctionality() {
   ender.classList.add("active");
-  container.classList.add("boxActive");
+  document.body.classList.add("boxActive");
   finalScore.innerHTML = currentScore;
   maxScore = Math.max(maxScore, currentScore);
   console.log(maxScore);
@@ -116,7 +115,7 @@ function endFunctionality() {
 closeBtn.addEventListener("click", () => {
   if (ender.classList.contains("active")) {
     ender.classList.remove("active");
-    container.classList.remove("boxActive");
+    document.body.classList.remove("boxActive");
     // endFunctionality();
     clearInterval(setId);
     timeDuration = 10;

@@ -73,8 +73,7 @@ body.toggler .box {
 body.toggler .container {
   background-color: var(--toggler-container-color);
 }
-.container.boxActive {
-
+body.boxActive .container {
   pointer-events: none;
   filter: blur(5px);
 }
@@ -206,6 +205,10 @@ body.toggler .restart:hover {
   pointer-events: none;
   transition: all 0.5s ease;
   z-index: -1;
+}
+body.boxActive .start {
+  pointer-events: none;
+  filter: blur(5px);
 }
 .ender h1 {
   color: var(--text-color);
