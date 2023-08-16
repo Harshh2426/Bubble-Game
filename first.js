@@ -12,9 +12,9 @@ let finalScore = document.querySelector("#finalScore");
 let closeBtn = document.querySelector(".close-icon");
 let highScore = document.querySelector(".highScore");
 let toggleBtn = document.querySelector(".mode-toggler");
-let introPage=document.querySelector(".intro-page");
+let introBox=document.querySelector(".intro-box");
 let timeOption=document.querySelector("#timerOption");
-// timeOption.innerHTML="50";
+
 
 let content = "";
 let data = 2;
@@ -66,7 +66,6 @@ function timer() {
 start.addEventListener("click", () => {
   if (indicator == 0) {
     timeDuration=timeOption.value;
-    introPage.classList.remove("show");
     Time.innerHTML = timeDuration;
     hitValue = getRandom();
     Hit.innerHTML = hitValue;
@@ -146,3 +145,7 @@ function saveData() {
 function getData(){
   highScore.innerHTML=localStorage.getItem("gameScore");
 }
+
+introBox.addEventListener("click",()=>{
+  introBox.classList.remove("show");
+})

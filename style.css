@@ -307,6 +307,8 @@ body.toggler .close-icon:hover {
   font-size: 39px;
   cursor: pointer;
   color: var(--text-color);
+  position: relative;
+  z-index: 4;
 }
 body.toggler .toggler-icon {
   color: var(--toggler-text-color);
@@ -332,27 +334,36 @@ body.toggler .msg h2 {
   font-size: 35px;
 }
 
-.intro-page {
+
+.intro-box {
   display: none;
 }
 
-.intro-page.show {
+.intro-box.show {
   position: absolute;
-  height: 80%;
-  width: 80%;
-  z-index: 5;
+  height: 100vh;
+  width: 100%;
+  z-index: 3;
   background-color: var(--intro-page-bg);
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  padding: 10px 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.intro-page{
+  height: 80%;
+  width: 80%;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
   gap: 50px;
-  padding: 10px 30px;
 }
-body.toggler .intro-page {
+body.toggler .intro-box {
   background-color: var(--toggler-intro-page-bg);
 }
 
@@ -534,16 +545,16 @@ body.toggler .intro-text span {
     height: 74vh;
     width: 100%;
     top: 48%;
-    gap: 60px;
+    gap: 30px;
   }
 
   .intro-heading {
-    padding: 0 10px;
+    padding: 0 10px 15px 0;
     position: relative;
     display: flex;
   }
   .intro-heading h1 {
-    font-size: 50px;
+    font-size: 40px;
   }
 
   .intro-heading::after {
@@ -551,6 +562,7 @@ body.toggler .intro-text span {
   }
 
   .intro-text {
+    padding: 0 5px;
     font-size: 20px;
   }
   .intro-text span {
@@ -559,7 +571,7 @@ body.toggler .intro-text span {
   }
 
   .intro-text-play {
-    font-size: 25px;
+    font-size: 23px;
     font-weight: 800;
     color: var(--intro-page-heading);
   }
