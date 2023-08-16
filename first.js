@@ -12,6 +12,9 @@ let finalScore = document.querySelector("#finalScore");
 let closeBtn = document.querySelector(".close-icon");
 let highScore = document.querySelector(".highScore");
 let toggleBtn = document.querySelector(".mode-toggler");
+let introPage=document.querySelector(".intro-page");
+let timeOption=document.querySelector("#timerOption");
+// timeOption.innerHTML="50";
 
 let content = "";
 let data = 2;
@@ -62,6 +65,8 @@ function timer() {
 
 start.addEventListener("click", () => {
   if (indicator == 0) {
+    timeDuration=timeOption.value;
+    introPage.classList.remove("show");
     Time.innerHTML = timeDuration;
     hitValue = getRandom();
     Hit.innerHTML = hitValue;
@@ -77,7 +82,7 @@ restart.addEventListener("click", () => {
   Hit.innerHTML = hitValue;
   dataChanger();
   clearInterval(setId);
-  timeDuration = 10;
+  timeDuration = timeOption.value;
   Time.innerHTML = timeDuration;
   timer();
   ender.classList.remove("active");
@@ -88,6 +93,10 @@ bottomSection.addEventListener("click", (e) => {
     if (e.target.innerHTML == hitValue) {
       currentScore += 10;
       dataChanger();
+      clearInterval(setId);
+      timeDuration++;
+      Time.innerHTML = timeDuration;
+      timer();
     } else {
       currentScore -= 1;
     }

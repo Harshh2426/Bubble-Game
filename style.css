@@ -22,9 +22,11 @@
   --close-icon-color: #391b85;
   --close-icon-bg-hover: #391b85;
   --close-icon-color-hover: #fff;
+  --intro-page-bg: #391b85;
+  --intro-page-heading: #fff;
 
   --toggler-header-color: #070d0d;
-  --toggler-background-color: #182528;
+  --toggler-background-color: #696969;
   --toggler-bubble-color: #070d0d;
   --toggler-bubble-hover-color: #2b363d;
   --toggler-container-color: #fff;
@@ -33,11 +35,12 @@
   --toggler-data-color: #070d0d;
   --toogler-ender-bg-color: #fff;
   --toogler-ender-data-color: #070d0d;
-  --toogler-btn-hover: #182528;
+  --toogler-btn-hover: #696969;
   --toggler-close-icon-bg: #fff;
   --toggler-close-icon-color: #070d0d;
   --toggler-close-icon-bg-hover: #070d0d;
   --toggler-close-icon-color-hover: #fff;
+  --toggler-intro-page-bg: #070d0d;
 }
 body {
   height: 100vh;
@@ -113,6 +116,18 @@ body.toggler .data {
   background-color: var(--toggler-container-color);
   color: var(--toggler-data-color);
 }
+#timerOption {
+  font-size: inherit;
+  color: inherit;
+  font-weight: inherit;
+  border: 0px;
+  padding: 0;
+  outline: none;
+}
+#timerOption option {
+  display: inline-block;
+  padding: 5px 10px;
+}
 .bottom-section {
   height: 65vh;
   padding: 20px;
@@ -161,6 +176,13 @@ body.toggler .bubble:hover {
   font-weight: bolder;
   text-transform: uppercase;
   transition: all 0.5s;
+  position: relative;
+}
+
+@keyframes popup {
+  100% {
+    scale: 1.25;
+  }
 }
 body.toggler .start {
   color: var(--toggler-header-color);
@@ -310,6 +332,127 @@ body.toggler .msg h2 {
   font-size: 35px;
 }
 
+.intro-page {
+  display: none;
+}
+
+.intro-page.show {
+  position: absolute;
+  height: 80%;
+  width: 80%;
+  z-index: 5;
+  background-color: var(--intro-page-bg);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 50px;
+  padding: 10px 30px;
+}
+body.toggler .intro-page {
+  background-color: var(--toggler-intro-page-bg);
+}
+
+.intro-heading {
+  padding: 0 10px;
+  position: relative;
+  display: flex;
+}
+.intro-heading h1 {
+  font-size: 60px;
+  font-weight: 900;
+  color: var(--intro-page-heading);
+  animation: lighter 2s ease infinite;
+}
+
+.intro-heading h1:nth-child(1) {
+  animation-delay: 0.2s;
+}
+.intro-heading h1:nth-child(2) {
+  animation-delay: 0.4s;
+}
+.intro-heading h1:nth-child(3) {
+  animation-delay: 0.6s;
+}
+.intro-heading h1:nth-child(4) {
+  animation-delay: 0.8s;
+}
+.intro-heading h1:nth-child(5) {
+  animation-delay: 1s;
+}
+.intro-heading h1:nth-child(6) {
+  animation-delay: 1.2s;
+}
+.intro-heading h1:nth-child(8) {
+  animation-delay: 1.4s;
+}
+.intro-heading h1:nth-child(9) {
+  animation-delay: 1.6s;
+}
+.intro-heading h1:nth-child(10) {
+  animation-delay: 1.8s;
+}
+.intro-heading h1:nth-child(11) {
+  animation-delay: 2s;
+}
+
+@keyframes lighter {
+  0%,
+  70% {
+    color: #b7b4b4;
+  }
+  100% {
+    color: #fff;
+    text-shadow: 0 0 10px white, 0 0 20px white, 0 0 40px white;
+  }
+}
+
+.intro-heading::after {
+  content: "";
+  height: 10%;
+  width: 100%;
+  left: 0px;
+  background-color: var(--intro-page-heading);
+  position: absolute;
+  bottom: -10px;
+}
+
+.intro-text {
+  font-size: 25px;
+  padding: 0 20px;
+  text-align: center;
+  color: var(--intro-page-heading);
+}
+.intro-text span {
+  display: inline-block;
+  padding: 0 5px;
+  font-size: 28px;
+  color: var(--btn-hover);
+}
+body.toggler .intro-text span {
+  color: var(--toggler-background-color);
+}
+
+.intro-text-play {
+  font-size: 30px;
+  font-weight: 800;
+  color: var(--intro-page-heading);
+}
+.down-icon {
+  font-size: 35px;
+  color: var(--intro-page-heading);
+  animation: downAn 0.5s linear infinite;
+}
+
+@keyframes downAn {
+  100% {
+    transform: translateY(20px);
+  }
+}
+
 @media only screen and (max-width: 568px) {
   .header {
     padding: 0 5%;
@@ -384,5 +527,51 @@ body.toggler .msg h2 {
     height: 8vh;
     width: 100%;
     /* background-color: red; */
+  }
+
+  .intro-page.show {
+    position: absolute;
+    height: 74vh;
+    width: 100%;
+    top: 48%;
+    gap: 60px;
+  }
+
+  .intro-heading {
+    padding: 0 10px;
+    position: relative;
+    display: flex;
+  }
+  .intro-heading h1 {
+    font-size: 50px;
+  }
+
+  .intro-heading::after {
+    height: 8%;
+  }
+
+  .intro-text {
+    font-size: 20px;
+  }
+  .intro-text span {
+    padding: 2px 5px;
+    font-size: 23px;
+  }
+
+  .intro-text-play {
+    font-size: 25px;
+    font-weight: 800;
+    color: var(--intro-page-heading);
+  }
+  .down-icon {
+    font-size: 35px;
+    color: var(--intro-page-heading);
+    animation: downAn 0.5s linear infinite;
+  }
+
+  @keyframes downAn {
+    100% {
+      transform: translateY(20px);
+    }
   }
 }
