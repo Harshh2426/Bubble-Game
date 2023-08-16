@@ -1,0 +1,384 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+
+:root {
+  --header-color: #391b85;
+  --background-color: #8f75cf;
+  --bubble-color: #391b85;
+  --bubble-hover-color: #9780d1;
+  --container-color: #fff;
+  --heading-color: #fff;
+  --text-color: #fff;
+  --data-color: #391b85;
+  --ender-bg-color: #fff;
+  --ender-data-color: #391b85;
+  --btn-hover: #ca9bf7;
+  --close-icon-bg: #fff;
+  --close-icon-color: #391b85;
+  --close-icon-bg-hover: #391b85;
+  --close-icon-color-hover: #fff;
+
+  --toggler-header-color: #070d0d;
+  --toggler-background-color: #182528;
+  --toggler-bubble-color: #070d0d;
+  --toggler-bubble-hover-color: #2b363d;
+  --toggler-container-color: #fff;
+  --toggler-heading-color: #fff;
+  --toggler-text-color: #fff;
+  --toggler-data-color: #070d0d;
+  --toogler-ender-bg-color: #fff;
+  --toogler-ender-data-color: #070d0d;
+  --toogler-btn-hover: #182528;
+  --toggler-close-icon-bg: #fff;
+  --toggler-close-icon-color: #070d0d;
+  --toggler-close-icon-bg-hover: #070d0d;
+  --toggler-close-icon-color-hover: #fff;
+}
+body {
+  height: 100vh;
+  width: 100vw;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  margin: auto;
+}
+/* html {
+  overflow: hidden;
+} */
+.box {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  /* justify-content: space-around; */
+  flex-direction: column;
+  background-color: var(--background-color);
+}
+body.toggler .box {
+  background-color: var(--toggler-background-color);
+}
+.container {
+  border-radius: 5px;
+  height: 80vh;
+  width: 80vw;
+  background-color: var(--container-color);
+  overflow: hidden;
+}
+body.toggler .container {
+  background-color: var(--toggler-container-color);
+}
+.container.boxActive {
+
+  pointer-events: none;
+  filter: blur(5px);
+}
+.top-section {
+  height: 15vh;
+  background-color: var(--header-color);
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+body.toggler .top-section {
+  background-color: var(--toggler-header-color);
+}
+.section-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+.heading {
+  color: var(--heading-color);
+  font-size: 2em;
+}
+body.toggler .heading {
+  color: var(--toggler-heading-color);
+}
+.data {
+  font-size: 3em;
+  padding: 5px 15px;
+  border-radius: 4px;
+  background-color: var(--container-color);
+  text-shadow: 1px 1px rgb(81, 80, 80);
+  color: var(--data-color);
+}
+body.toggler .data {
+  background-color: var(--toggler-container-color);
+  color: var(--toggler-data-color);
+}
+.bottom-section {
+  height: 65vh;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 25px;
+  flex-wrap: wrap;
+}
+.bubble {
+  height: 50px;
+  width: 50px;
+  display: flex;
+  border-radius: 50%;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--bubble-color);
+  font-weight: 900;
+  transition: all 0.5s;
+  cursor: pointer;
+  color: var(--text-color);
+}
+body.toggler .bubble {
+  background-color: var(--toggler-bubble-color);
+}
+.bubble:hover {
+  background-color: var(--bubble-hover-color);
+}
+body.toggler .bubble:hover {
+  background-color: var(--toggler-bubble-hover-color);
+}
+.btn {
+  height: 10vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.start {
+  font-size: 25px;
+  cursor: pointer;
+  padding: 5px 20px;
+  border-radius: 5px;
+  color: var(--header-color);
+  border-color: var(--header-color);
+  font-weight: bolder;
+  text-transform: uppercase;
+  transition: all 0.5s;
+}
+body.toggler .start {
+  color: var(--toggler-header-color);
+  border-color: var(--toggler-header-color);
+}
+.start:hover {
+  background-color: var(--btn-hover);
+}
+body.toggler .start:hover {
+  border-color: var(--toggler-btn-color);
+}
+.restart {
+  transition: all 0.5s;
+  color: var(--header-color);
+  border-color: var(--header-color);
+  font-size: 25px;
+  cursor: pointer;
+  text-transform: uppercase;
+  padding: 5px 20px;
+  border-radius: 5px;
+  font-weight: bolder;
+}
+body.toggler .restart {
+  color: var(--toggler-header-color);
+  border-color: var(--toggler-header-color);
+}
+.restart:hover {
+  background-color: var(--btn-hover);
+}
+body.toggler .restart:hover {
+  border-color: var(--toggler-btn-color);
+}
+.ender {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  height: 0;
+  width: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: all 0.5s ease;
+  z-index: -1;
+}
+.ender h1 {
+  color: var(--text-color);
+}
+body.toggler .ender {
+  color: var(--toggler-text-color);
+}
+.ender h3 {
+  font-size: 50px;
+}
+.active {
+  opacity: 1;
+  z-index: 2;
+  visibility: visible;
+  pointer-events: auto;
+  background-color: var(--background-color);
+  height: 50%;
+  width: 60%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 25px;
+}
+body.toggler .active {
+  background-color: var(--toggler-background-color);
+}
+
+#finalScore {
+  color: var(--ender-data-color);
+  font-size: larger;
+  font-weight: 800;
+}
+body.toggler #finalScore {
+  color: var(--togger-ender-data-color);
+}
+.icon {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}
+.close-icon {
+  font-size: 25px;
+  padding: 10px;
+  background-color: var(--close-icon-bg);
+  color: var(--close-icon-color);
+  font-weight: 600;
+  border-radius: 50%;
+  transition: all 0.5s;
+  cursor: pointer;
+}
+body.toggler .close-icon {
+  background-color: var(--toggler-close-icon-bg);
+  color: var(--toggler-close-icon-color);
+}
+.close-icon:hover {
+  background-color: var(--close-icon-bg-hover);
+  color: var(--close-icon-color-hover);
+}
+body.toggler .close-icon:hover {
+  background-color: var(--toggler-close-icon-bg-hover);
+  color: var(--toggler-close-icon-color-hover);
+}
+
+.header {
+  padding: 0 10%;
+  height: 10vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.toggler-icon {
+  font-size: 39px;
+  cursor: pointer;
+  color: var(--text-color);
+}
+body.toggler .toggler-icon {
+  color: var(--toggler-text-color);
+}
+
+.moon {
+  display: none;
+}
+body.toggler .moon {
+  display: block;
+}
+body.toggler .sun {
+  display: none;
+}
+.msg h2 {
+  font-size: 35px;
+  color: var(--text-color);
+}
+body.toggler .msg h2 {
+  color: var(--toggler-text-color);
+}
+.msg span {
+  font-size: 35px;
+}
+
+@media only screen and (max-width: 568px) {
+  .header {
+    padding: 0 5%;
+    height: 10vh;
+  }
+  .toggler-icon {
+    font-size: 30px;
+  }
+  .msg h2 {
+    font-size: 22px;
+  }
+  .msg span {
+    font-size: 25px;
+  }
+
+  .container {
+    height: 76vh;
+    width: 100vw;
+  }
+  .heading {
+    font-size: 15px;
+  }
+  .section-box {
+    gap: 8px;
+  }
+  .top-section {
+    height: 9vh;
+  }
+  .data {
+    font-size: 22px;
+    padding: 5px 10px;
+  }
+  .bottom-section {
+    /* height: 70vh; */
+    padding: 15px;
+    gap: 15px;
+  }
+
+  .bubble {
+    height: 40px;
+    width: 40px;
+  }
+
+  .start,
+  .restart {
+    font-size: 18px;
+    padding: 5px 20px;
+  }
+
+  .ender h3 {
+    font-size: 40px;
+  }
+
+  .active {
+    height: 60%;
+    width: 60%;
+    gap: 10px;
+  }
+
+  #finalScore {
+    margin-left: 5px;
+    font-size: 22px;
+  }
+  .close-icon {
+    font-size: 18px;
+    padding: 8px;
+  }
+  .ender h1 {
+    font-size: 16px;
+  }
+  .btn {
+    height: 8vh;
+    width: 100%;
+  }
+}
