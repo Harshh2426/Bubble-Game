@@ -30,6 +30,7 @@ let maxScore = 0;
 
 bubbleGenerator();
 getData();
+console.log(maxScore);
 
 function getRandom() {
   let randomNumber = Math.floor(Math.random() * (maxi - mini + 1)) + mini;
@@ -106,15 +107,15 @@ bottomSection.addEventListener("click", (e) => {
 function endFunctionality() {
   ender.classList.add("active");
   document.body.classList.add("boxActive");
-  finalScore.innerHTML = currentScore;
-  maxScore = Math.max(maxScore, currentScore);
+  maxScore=Math.max(currentScore,maxScore)
   console.log(maxScore);
-  highScore.innerHTML = maxScore;
+  saveData();
+  highScore.innerHTML=localStorage.getItem("gameScore");
+  finalScore.innerHTML=currentScore;
   hitValue = 0;
   Hit.innerHTML = hitValue;
   currentScore = 0;
   Score.innerHTML = 0;
-  saveData();
   arrayAllBubble.forEach((element) => {
     element.innerHTML = "";
   });
@@ -126,7 +127,7 @@ closeBtn.addEventListener("click", () => {
     document.body.classList.remove("boxActive");
     // endFunctionality();
     clearInterval(setId);
-    timeDuration = 10;
+    timeDuration = timeOption.value;
     indicator = 0;
   }
 });
