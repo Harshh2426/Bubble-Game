@@ -7,7 +7,7 @@ let start = document.querySelector(".start");
 let restart = document.querySelector(".restart");
 let ender = document.querySelector(".ender");
 let allBUbble = document.querySelector(".bottom-section");
-let arrayAllBubble = allBUbble.childNodes;
+let arrayAllBubble ;
 let finalScore = document.querySelector("#finalScore");
 let closeBtn = document.querySelector(".close-icon");
 let highScore = document.querySelector(".highScore");
@@ -26,16 +26,20 @@ let timeDuration = 10;
 let currentScore = 0;
 let maxScore = 0;
 
-// highScore.style.background="yellow"
 
 bubbleGenerator();
 getData();
-console.log(maxScore);
+
+
+//   Function to generate a random number
 
 function getRandom() {
   let randomNumber = Math.floor(Math.random() * (maxi - mini + 1)) + mini;
   return randomNumber;
 }
+
+
+//    Function to generate bubbles
 
 function bubbleGenerator() {
   for (let x = 0; x <= 95; x++) {
@@ -46,11 +50,15 @@ function bubbleGenerator() {
   bottomSection.innerHTML = content;
 }
 
+//    Function to generate random number inside bubbles  
+
 function dataChanger() {
   arrayAllBubble.forEach((element) => {
     element.innerHTML = getRandom();
   });
 }
+
+//    Function for timer 
 
 let setId;
 function timer() {
@@ -64,8 +72,11 @@ function timer() {
   }, 1000);
 }
 
+//    Functionality of start button
+
 start.addEventListener("click", () => {
   if (indicator == 0) {
+    arrayAllBubble = document.querySelectorAll(".bubble")
     timeDuration=timeOption.value;
     Time.innerHTML = timeDuration;
     hitValue = getRandom();
@@ -75,6 +86,8 @@ start.addEventListener("click", () => {
     indicator = 1;
   }
 });
+
+//     Functionality for restart button
 
 restart.addEventListener("click", () => {
   document.body.classList.remove("boxActive");
