@@ -7,14 +7,13 @@ let start = document.querySelector(".start");
 let restart = document.querySelector(".restart");
 let ender = document.querySelector(".ender");
 let allBUbble = document.querySelector(".bottom-section");
-let arrayAllBubble ;
+let arrayAllBubble;
 let finalScore = document.querySelector("#finalScore");
 let closeBtn = document.querySelector(".close-icon");
 let highScore = document.querySelector(".highScore");
 let toggleBtn = document.querySelector(".mode-toggler");
-let introBox=document.querySelector(".intro-box");
-let timeOption=document.querySelector("#timerOption");
-
+let introBox = document.querySelector(".intro-box");
+let timeOption = document.querySelector("#timerOption");
 
 let content = "";
 let data = 2;
@@ -26,10 +25,8 @@ let timeDuration = 10;
 let currentScore = 0;
 let maxScore = 0;
 
-
 bubbleGenerator();
 getData();
-
 
 //   Function to generate a random number
 
@@ -38,7 +35,6 @@ function getRandom() {
   return randomNumber;
 }
 
-
 //    Function to generate bubbles
 
 function bubbleGenerator() {
@@ -46,11 +42,11 @@ function bubbleGenerator() {
     let x = `<div class="bubble">${""}</div>`;
     content += x;
   }
-  
+
   bottomSection.innerHTML = content;
 }
 
-//    Function to generate random number inside bubbles  
+//    Function to generate random number inside bubbles
 
 function dataChanger() {
   arrayAllBubble.forEach((element) => {
@@ -58,7 +54,7 @@ function dataChanger() {
   });
 }
 
-//    Function for timer 
+//    Function for timer
 
 let setId;
 function timer() {
@@ -76,8 +72,8 @@ function timer() {
 
 start.addEventListener("click", () => {
   if (indicator == 0) {
-    arrayAllBubble = document.querySelectorAll(".bubble")
-    timeDuration=timeOption.value;
+    arrayAllBubble = document.querySelectorAll(".bubble");
+    timeDuration = timeOption.value;
     Time.innerHTML = timeDuration;
     hitValue = getRandom();
     Hit.innerHTML = hitValue;
@@ -109,6 +105,8 @@ bottomSection.addEventListener("click", (e) => {
       clearInterval(setId);
       timeDuration++;
       Time.innerHTML = timeDuration;
+      hitValue = getRandom();
+      Hit.innerHTML = hitValue;
       timer();
     } else {
       currentScore -= 1;
@@ -120,11 +118,11 @@ bottomSection.addEventListener("click", (e) => {
 function endFunctionality() {
   ender.classList.add("active");
   document.body.classList.add("boxActive");
-  maxScore=Math.max(currentScore,maxScore)
+  maxScore = Math.max(currentScore, maxScore);
   console.log(maxScore);
   saveData();
-  highScore.innerHTML=localStorage.getItem("gameScore");
-  finalScore.innerHTML=currentScore;
+  highScore.innerHTML = localStorage.getItem("gameScore");
+  finalScore.innerHTML = currentScore;
   hitValue = 0;
   Hit.innerHTML = hitValue;
   currentScore = 0;
@@ -150,16 +148,16 @@ toggleBtn.addEventListener("click", () => {
 });
 
 function saveData() {
-  let x=localStorage.getItem("gameScore");
+  let x = localStorage.getItem("gameScore");
   localStorage.removeItem("gameScore");
-  let d=Math.max(x,maxScore);
+  let d = Math.max(x, maxScore);
   localStorage.setItem("gameScore", d);
 }
 
-function getData(){
-  highScore.innerHTML=localStorage.getItem("gameScore");
+function getData() {
+  highScore.innerHTML = localStorage.getItem("gameScore");
 }
 
-introBox.addEventListener("click",()=>{
+introBox.addEventListener("click", () => {
   introBox.classList.remove("show");
-})
+});
