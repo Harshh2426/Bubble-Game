@@ -14,6 +14,9 @@ let highScore = document.querySelector(".highScore");
 let toggleBtn = document.querySelector(".mode-toggler");
 let introBox = document.querySelector(".intro-box");
 let timeOption = document.querySelector("#timerOption");
+let audioController=document.querySelector(".audio-controls")
+// audioController.style.background="blue"
+let sound=true;
 
 let content = "";
 let data = 2;
@@ -93,6 +96,7 @@ restart.addEventListener("click", () => {
   clearInterval(setId);
   timeDuration = timeOption.value;
   Time.innerHTML = timeDuration;
+  sound=true;
   timer();
   ender.classList.remove("active");
 });
@@ -107,9 +111,15 @@ bottomSection.addEventListener("click", (e) => {
       Time.innerHTML = timeDuration;
       hitValue = getRandom();
       Hit.innerHTML = hitValue;
+      if(sound){
+        playAudio('win.wav');
+      }
       timer();
     } else {
       currentScore -= 1;
+      if(sound){
+        playAudio('lose.wav');
+      }
     }
     Score.innerHTML = currentScore;
   }
@@ -160,4 +170,14 @@ function getData() {
 
 introBox.addEventListener("click", () => {
   introBox.classList.remove("show");
+  audioController.style.display="flex";
 });
+
+function playAudio(url){
+  new Audio(url).play();
+}
+
+audioController.addEventListener("click",()=>{
+  sound=!sound;
+  audioController.classList.toggle("alter");
+})

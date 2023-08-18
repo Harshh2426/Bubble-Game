@@ -24,6 +24,8 @@
   --close-icon-color-hover: #fff;
   --intro-page-bg: #391b85;
   --intro-page-heading: #fff;
+  --audio-bg: #fff;
+  --audio-color: #391b85;
 
   --toggler-header-color: #070d0d;
   --toggler-background-color: #696969;
@@ -41,6 +43,8 @@
   --toggler-close-icon-bg-hover: #070d0d;
   --toggler-close-icon-color-hover: #fff;
   --toggler-intro-page-bg: #070d0d;
+  --toggler-audio-bg: #fff;
+  --toggler-audio-color:  #070d0d;
 }
 body {
   height: 100vh;
@@ -464,6 +468,40 @@ body.toggler .intro-text span {
   }
 }
 
+.audio-controls{
+  display: none;
+  height: 50px;
+  width: 70px;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  background-color: red;
+  position: absolute;
+  z-index: 6;
+  /* display: flex; */
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: var(--audio-bg);
+}
+
+body.toggler .audio-controls{
+  background-color: var(--toggler-audio-bg);
+}
+
+.muted{
+  display: none;
+}
+
+.audio-controls.alter .muted{
+  display: block;
+}
+.audio-controls.alter .play{
+  display: none;
+}
+
+
 @media only screen and (max-width: 568px) {
   .header {
     padding: 0 5%;
@@ -585,5 +623,14 @@ body.toggler .intro-text span {
     100% {
       transform: translateY(20px);
     }
+  }
+
+  .audio-controls{
+    top: 87%;
+    height: 30px;
+    width: 50px;
+  }
+  .audio-controls img{
+    width: 100%;
   }
 }
