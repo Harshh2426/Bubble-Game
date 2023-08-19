@@ -97,6 +97,9 @@ restart.addEventListener("click", () => {
   timeDuration = timeOption.value;
   Time.innerHTML = timeDuration;
   sound=true;
+  if(audioController.classList.contains("alter")){
+    audioController.classList.remove('alter');
+  }
   timer();
   ender.classList.remove("active");
 });
